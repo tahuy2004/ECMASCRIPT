@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "ao"
+    },
+    {
+      "id": 2,
+      "name": "quan"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "cate_id": 1,
+      "name": "Áo sơ mi",
+      "price": 100000,
+      "detail": "Abcxyz",
+      "image": ""
+    }
+  ]
+}
