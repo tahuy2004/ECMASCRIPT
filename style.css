@@ -320,3 +320,57 @@ form input[type="submit"]:hover {
   background-color: #d4edda;
   color: #155724;
 }
+/* Đảm bảo rằng tất cả các nút hành động nằm trong cùng một dòng */
+.action-buttons {
+  display: flex;
+  gap: 10px; /* Khoảng cách giữa các nút */
+  justify-content: center; /* Căn giữa các nút trong cột */
+}
+
+/* Đảm bảo rằng bảng không bị lệch */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+td img {
+  width: 100px;
+  height: auto;
+}
+/* CSS cho form sản phẩm */
+#form-container {
+  display: none; /* Ẩn form khi không cần thiết */
+  margin-top: 20px;
+}
+
+#product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Khoảng cách giữa các trường */
+}
+
+#product-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-submit {
+  background-color: #4caf50; /* Màu nền xanh */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #45a049; /* Màu nền xanh đậm khi hover */
+}

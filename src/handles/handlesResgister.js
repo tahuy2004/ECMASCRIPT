@@ -19,7 +19,7 @@ async function submitResgister() {
     };
 
     if (valiResgister(users)) {
-      const res = await api.post("/register", users); // Thay đổi từ '/resgister' thành '/register'
+      const res = await api.post("/register", users);
       console.log(res);
     }
   } catch (error) {

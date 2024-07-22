@@ -10,37 +10,43 @@ const handlesAdmin = async () => {
     const contentHTML = data
       .map((item) => {
         return /*html*/ `
+        <div class="content">
           <button class="btn-add">
             Thêm sản phẩm
           </button>
-          <div class="content">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Title</th>
-                  <th>Price</th>
-                  <th>Image</th>
-                  <th>Description</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>${item.id}</td>
-                  <td>${item.title}</td>
-                  <td>${item.price}</td>
-                  <td><img src="${item.thumbnail}" alt="Product Image"></td>
-                  <td>${item.description}</td>
-                  <td class="action-buttons">
-                    <button class="btn-edit" data-id="${item.id}">Update</button>
-                    <button class="btn-del" data-id="${item.id}">Delete</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        `;
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data
+                .map((item) => {
+                  return /*html*/ `
+                    <tr>
+                      <td>${item.id}</td>
+                      <td>${item.title}</td>
+                      <td>${item.price}</td>
+                      <td><img src="${item.thumbnail}" alt="Product Image"></td>
+                      <td>${item.description}</td>
+                      <td class="action-buttons">
+                        <button class="btn-edit" data-id="${item.id}">Update</button>
+                        <button class="btn-del" data-id="${item.id}">Delete</button>
+                      </td>
+                    </tr>
+                  `;
+                })
+                .join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
       })
       .join("");
 
