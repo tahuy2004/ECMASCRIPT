@@ -10,43 +10,56 @@ const handlesAdmin = async () => {
     const contentHTML = data
       .map((item) => {
         return /*html*/ `
-        <div class="content">
+         
+          <div class="content">
           <button class="btn-add">
-            Thêm sản phẩm
-          </button>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Image</th>
-                <th>Description</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+          Thêm sản phẩm
+        </button>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Price</th>
+                  <th>Image</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
               ${data
                 .map((item) => {
                   return /*html*/ `
-                    <tr>
-                      <td>${item.id}</td>
-                      <td>${item.title}</td>
-                      <td>${item.price}</td>
-                      <td><img src="${item.thumbnail}" alt="Product Image"></td>
-                      <td>${item.description}</td>
-                      <td class="action-buttons">
-                        <button class="btn-edit" data-id="${item.id}">Update</button>
-                        <button class="btn-del" data-id="${item.id}">Delete</button>
-                      </td>
-                    </tr>
-                  `;
+                  <tr>
+                    <td>${item.id}</td>
+                    <td>${item.title}</td>
+                    <td>${item.price}</td>
+                    <td><img src="${item.thumbnail}" alt="Product Image"></td>
+                    <td>${item.description}</td>
+                    <td class="action-buttons">
+                      <button class="btn-edit" data-id="${item.id}">Update</button>
+                      <button class="btn-del" data-id="${item.id}">Delete</button>
+                    </td>
+                  </tr>
+                `;
                 })
                 .join("")}
-            </tbody>
-          </table>
-        </div>
-      `;
+                <tr>
+                  <td>${item.id}</td>
+                  <td>${item.title}</td>
+                  <td>${item.price}</td>
+                  <td><img src="${item.thumbnail}" alt="Product Image"></td>
+                  <td>${item.description}</td>
+                  <td class="action-buttons">
+                    <button class="btn-edit" data-id="${
+                      item.id
+                    }">Update</button>
+                    <button class="btn-del" data-id="${item.id}">Delete</button>
+                  </td>
+                </tr>
+              
+            </table>
+          </div>
+        `;
       })
       .join("");
 
@@ -151,7 +164,7 @@ const handlesAdmin = async () => {
             const ten_sp = document.getElementById("ten_sp").value;
             const gia_sp = document.getElementById("gia_sp").value;
             const ghi_chu = document.getElementById("ghi_chu").value;
-            const thumbnail = document.getElementById("thumbnail").files[0];
+            // const thumbnail = document.getElementById("thumbnail").files[0];
             if (ten_sp === "") {
               alert("Nhập tên sản phẩm.");
               return;
