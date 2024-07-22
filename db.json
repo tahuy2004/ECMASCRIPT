@@ -1,0 +1,204 @@
+{
+  "users": [
+    {
+      "email": "asdasdad@gmail.com",
+      "password": "$2a$10$9h/SaHSG.STLuzPm0WDmeeKZZUjHq6gjpvuTha7LFlHpjG0NV6mJm",
+      "id": 4
+    },
+    {
+      "email": "asdasdadsdsdsd@gmail.com",
+      "password": "$2a$10$8kWSNWDJxNTzPaeA/xfWIeXINwSGCVoe3izlrs3izpx1e6sqJa3oi",
+      "id": 5
+    },
+    {
+      "email": "asdasdadsdsdsdsdsdsd@gmail.com",
+      "password": "$2a$10$Pxx4eObv.mrLxTR3luyTO.qlny3fUfzulL2iKFpxG7X0HjCPzJan2",
+      "id": 6
+    },
+    {
+      "email": "asdasdadsdsdsdssssdsdsd@gmail.com",
+      "password": "$2a$10$TPU3gzytY5tV4GnClkyUb.9MQt7pFkqjoxiW/0OIkZ0927Kg/ANg.",
+      "id": 7
+    },
+    {
+      "email": "asdasddsd@gmail.com",
+      "password": "$2a$10$2/Xv/BNdqGnslUQnBAC6quduDAS7k0WDhxS/JEw6iBXsqjtkIMxsy",
+      "id": 8
+    },
+    {
+      "email": "asdasdsdsdsdsdsd@gmail.com",
+      "password": "$2a$10$oiXZ8Y2kqThzHgqZ7c5FXuRazfTlR7FFGto5TWg8es18ij3IuWdqG",
+      "id": 9
+    },
+    {
+      "email": "asdasdsdsdsdsdsssd@gmail.com",
+      "password": "$2a$10$881XR65gKMkmfnsfW2Q2Auk0z1N0GWyW5OJthHOA9U5tttLq0sSdW",
+      "id": 10
+    },
+    {
+      "email": "asdasdsdsdsdsdsdsdsdsssd@gmail.com",
+      "password": "$2a$10$yh3VScyBubHATbJftVH9QOHQJk0xHG/oGMkOMtmu/LYHkb/GSkiWG",
+      "id": 11
+    },
+    {
+      "email": "asdasdsdsdsdssdsdsdsdsdsdsssd@gmail.com",
+      "password": "$2a$10$120QLAPBzk8AbOp8E2IfqOWcTUSgIwtnEx/7aKjoRvL5LzOxQtLQe",
+      "id": 12
+    },
+    {
+      "email": "dsdsdsdsdsssd@gmail.com",
+      "password": "$2a$10$28FauQZ/YCA7gHLfX8/r9euNT8JOSqNuH8TltK5alopox2JyPlu9a",
+      "id": 13
+    },
+    {
+      "email": "wewe@gmail.com",
+      "password": "$2a$10$CdIngzDd1Vj1DxWhR3tDuOeO/oTMpnrbpnSw4NoRdRAF5OUw7HVUC",
+      "id": 14
+    },
+    {
+      "email": "hoang@gmail.com",
+      "password": "$2a$10$rqyFn41nHt/BA7bHbTi6YOiDIIbmpSvL.maLULb.p5cflXAM98cu2",
+      "id": 15
+    },
+    {
+      "email": "hoang1@gmail.com",
+      "password": "$2a$10$ifuUt7sJZQB/20x3EolZmurRYQLTpyJFAZloAG1hsUWgI.VfCAmW.",
+      "id": 16
+    },
+    {
+      "email": "hoang123@gmail.com",
+      "password": "$2a$10$ac984H6jI17SN05iZXRLGOmUFKxRt6Kb47e.3as0nNnHy1fE2IQnK",
+      "id": 17
+    },
+    {
+      "email": "coderjs@gmail.com",
+      "password": "$2a$10$ykDoaZOS4yBOmv8li5OpSu4BE2d9Gl8vwiH.Vkx/5sJreR90TybMu",
+      "id": 18
+    },
+    {
+      "email": "hoangjs@gmail.com",
+      "password": "$2a$10$tJxzVzT6BZ.ddCJ18cy2yO.7Kb2Gj5gENMlGXnwqFQz2UFJeiHpwK",
+      "id": 19,
+      "role": "admin"
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$Bx3A979xh2Algeb4TFqhJec1LSx/c0LizMN1W9Tjfolk7gag4Xm76",
+      "id": 20
+    }
+  ],
+  "products": [
+    {
+      "title": "huy",
+      "price": "122",
+      "description": "huy",
+      "id": 25
+    },
+    {
+      "id": 26,
+      "title": "Flying Wooden Bird",
+      "description": "Package Include 6 Birds Model Size: 15*15*3.5cm Material: Wood",
+      "price": 51,
+      "discountPercentage": 15.58,
+      "rating": 4.41,
+      "stock": 17,
+      "brand": "Flying Wooden",
+      "category": "home_decoration",
+      "thumbnail": "https://picsum.photos/200",
+      "images": [
+        "https://picsum.photos/200",
+        "https://picsum.photos/200"
+      ]
+    },
+    {
+      "id": 27,
+      "title": "3D Embellishment Art Lamp",
+      "description": "3D led lamp sticker Wall sticker 3d wall art light on/off button cell operated (included)",
+      "price": 20,
+      "discountPercentage": 16.49,
+      "rating": 4.82,
+      "stock": 54,
+      "brand": "LED Lights",
+      "category": "home_decoration",
+      "thumbnail": "https://picsum.photos/200",
+      "images": [
+        "https://picsum.photos/200",
+        "https://picsum.photos/200"
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Handcraft Chinese style",
+      "description": "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
+      "price": 60,
+      "discountPercentage": 15.34,
+      "rating": 4.44,
+      "stock": 7,
+      "brand": "luxury palace",
+      "category": "home_decoration",
+      "thumbnail": "https://picsum.photos/200",
+      "images": [
+        "https://picsum.photos/200",
+        "https://picsum.photos/200"
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Key Holder",
+      "description": "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality",
+      "price": 30,
+      "discountPercentage": 2.92,
+      "rating": 4.92,
+      "stock": 54,
+      "brand": "Golden",
+      "category": "home_decoration",
+      "thumbnail": "https://picsum.photos/200",
+      "images": [
+        "https://picsum.photos/200",
+        "https://picsum.photos/200"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "undefined",
+      "price": "40"
+    },
+    {
+      "name": "hehe",
+      "price": "12",
+      "id": 31
+    },
+    {
+      "name": "hqhqhhq",
+      "price": "10000",
+      "id": 32
+    },
+    {
+      "name": "hqhqhhq",
+      "price": "10000",
+      "id": 34
+    },
+    {
+      "name": "12",
+      "price": "1111",
+      "id": 36
+    },
+    {
+      "title": "hqhqhhq",
+      "price": "1222222",
+      "id": 37
+    },
+    {
+      "title": "huy",
+      "price": "04042004",
+      "description": "ngày tháng ",
+      "id": 38
+    },
+    {
+      "title": "huy",
+      "price": "10000",
+      "description": "ngày tháng ",
+      "id": 39
+    }
+  ]
+}
