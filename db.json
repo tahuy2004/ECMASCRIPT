@@ -105,10 +105,20 @@
       "brand": "Flying Wooden",
       "category": "home_decoration",
       "thumbnail": "https://picsum.photos/200",
-      "images": [
-        "https://picsum.photos/200",
-        "https://picsum.photos/200"
-      ]
+      "images": ["https://picsum.photos/200", "https://picsum.photos/200"]
+    },
+    {
+      "id": 30,
+      "title": "Flying Wooden Bird",
+      "description": "Package Include 6 Birds Model Size: 15*15*3.5cm Material: Wood",
+      "price": 51,
+      "discountPercentage": 15.58,
+      "rating": 4.41,
+      "stock": 17,
+      "brand": "Flying Wooden",
+      "category": "home_decoration",
+      "thumbnail": "https://picsum.photos/200",
+      "images": ["https://picsum.photos/200", "https://picsum.photos/200"]
     },
     {
       "id": 27,
@@ -121,10 +131,7 @@
       "brand": "LED Lights",
       "category": "home_decoration",
       "thumbnail": "https://picsum.photos/200",
-      "images": [
-        "https://picsum.photos/200",
-        "https://picsum.photos/200"
-      ]
+      "images": ["https://picsum.photos/200", "https://picsum.photos/200"]
     },
     {
       "id": 28,
@@ -137,10 +144,7 @@
       "brand": "luxury palace",
       "category": "home_decoration",
       "thumbnail": "https://picsum.photos/200",
-      "images": [
-        "https://picsum.photos/200",
-        "https://picsum.photos/200"
-      ]
+      "images": ["https://picsum.photos/200", "https://picsum.photos/200"]
     },
     {
       "id": 29,
@@ -153,10 +157,7 @@
       "brand": "Golden",
       "category": "home_decoration",
       "thumbnail": "https://picsum.photos/200",
-      "images": [
-        "https://picsum.photos/200",
-        "https://picsum.photos/200"
-      ]
+      "images": ["https://picsum.photos/200", "https://picsum.photos/200"]
     },
     {
       "id": 30,

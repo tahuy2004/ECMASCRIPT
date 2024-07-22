@@ -133,6 +133,7 @@ const handlesAdmin = async () => {
               <input type="text" id="ten_sp" placeholder="Tên sản phẩm..." value="${data.title}">
               <input type="text" id="gia_sp" placeholder="Giá sản phẩm..." value="${data.price}">
               <input type="text" id="ghi_chu" placeholder="Ghi chú..." value="${data.description}">
+              
               <input type="submit" value="Cập nhật sản phẩm" class="btn-submit">
               
             </form>
@@ -144,6 +145,7 @@ const handlesAdmin = async () => {
             const ten_sp = document.getElementById("ten_sp").value;
             const gia_sp = document.getElementById("gia_sp").value;
             const ghi_chu = document.getElementById("ghi_chu").value;
+            const thumbnail = document.getElementById("thumbnail").files[0];
             if (ten_sp === "") {
               alert("Nhập tên sản phẩm.");
               return;

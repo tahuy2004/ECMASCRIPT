@@ -45,8 +45,9 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+
   bottom: 0;
+  margin: 10px 0 0;
 }
 #productList {
   display: flex;
@@ -184,4 +185,138 @@ th {
 .action-buttons button.delete {
   background-color: #f44336;
   color: white;
+}
+/* Reset CSS để có một giao diện đồng nhất trên các trình duyệt */
+
+/* Định dạng chung cho toàn bộ trang */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Style cho container chính */
+#product {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style cho nút thêm sản phẩm */
+.btn-add {
+  display: block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
+
+/* Style cho bảng sản phẩm */
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.content th,
+.content td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.content th {
+  background-color: #f4f4f4;
+}
+
+.content img {
+  width: 100px;
+  height: auto;
+}
+
+/* Style cho các nút hành động */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-edit,
+.btn-del {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-edit {
+  background-color: #007bff;
+}
+
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+
+.btn-del {
+  background-color: #dc3545;
+}
+
+.btn-del:hover {
+  background-color: #c82333;
+}
+
+/* Style cho form thêm và cập nhật sản phẩm */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input[type="text"],
+form input[type="file"] {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+form input[type="submit"] {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style cho thông báo lỗi */
+.alert {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
 }
