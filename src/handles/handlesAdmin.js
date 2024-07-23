@@ -7,28 +7,24 @@ const handlesAdmin = async () => {
   try {
     const { data } = await api.get("/products");
 
-    const contentHTML = data
-      .map((item) => {
-        return /*html*/ `
-         
-          <div class="content">
-          <button class="btn-add">
-          Thêm sản phẩm
-        </button>
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Title</th>
-                  <th>Price</th>
-                  <th>Image</th>
-                  <th>Description</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              ${data
-                .map((item) => {
-                  return /*html*/ `
+    const contentHTML = /*html*/ `
+      <div class="content">
+        <button class="btn-add">Thêm sản phẩm</button>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${data
+              .map((item) => {
+                return /*html*/ `
                   <tr>
                     <td>${item.id}</td>
                     <td>${item.title}</td>
@@ -41,27 +37,12 @@ const handlesAdmin = async () => {
                     </td>
                   </tr>
                 `;
-                })
-                .join("")}
-                <tr>
-                  <td>${item.id}</td>
-                  <td>${item.title}</td>
-                  <td>${item.price}</td>
-                  <td><img src="${item.thumbnail}" alt="Product Image"></td>
-                  <td>${item.description}</td>
-                  <td class="action-buttons">
-                    <button class="btn-edit" data-id="${
-                      item.id
-                    }">Update</button>
-                    <button class="btn-del" data-id="${item.id}">Delete</button>
-                  </td>
-                </tr>
-              
-            </table>
-          </div>
-        `;
-      })
-      .join("");
+              })
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
 
     product.innerHTML = contentHTML;
 
@@ -108,14 +89,15 @@ const handlesAdmin = async () => {
           alert("Nhập tên sản phẩm.");
           return;
         }
-        if (gia_sp === "") {
-          alert("Nhập giá sản phẩm.");
+        if (gia_sp === "" || isNaN(gia_sp) || gia_sp <= 0) {
+          alert("Giá sản phẩm phải là số và lớn hơn 0.");
           return;
         }
         if (ghi_chu === "") {
           alert("Nhập ghi chú.");
           return;
         }
+
         const newData = {
           title: ten_sp,
           price: gia_sp,
@@ -164,33 +146,30 @@ const handlesAdmin = async () => {
             const ten_sp = document.getElementById("ten_sp").value;
             const gia_sp = document.getElementById("gia_sp").value;
             const ghi_chu = document.getElementById("ghi_chu").value;
-            // const thumbnail = document.getElementById("thumbnail").files[0];
-            if (ten_sp === "") {
-              alert("Nhập tên sản phẩm.");
+            if (ten_sp === "" || gia_sp === "" || ghi_chu === "") {
+              alert("Vui lòng điền đầy đủ thông tin.");
               return;
             }
-            if (gia_sp === "") {
-              alert("Nhập giá sản phẩm.");
-              return;
-            }
-            if (ghi_chu === "") {
-              alert("Nhập ghi chú.");
+            if (gia_sp === "" || isNaN(gia_sp) || gia_sp <= 0) {
+              alert("Giá sản phẩm phải là số và lớn hơn 0.");
               return;
             }
 
-            const updatedData = {
-              title: ten_sp,
-              price: gia_sp,
-              description: ghi_chu,
-            };
-
+            if (
+              ten_sp === data.title &&
+              gia_sp === data.price &&
+              ghi_chu === data.description
+            ) {
+              alert("Bạn chưa thay đổi thông tin sản phẩm.");
+              return;
+            }
             try {
               await fetch(`${url}/${id}`, {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify(updatedData),
+                body: JSON.stringify(updateForm),
               });
               alert("Cập nhật sản phẩm thành công.");
               handlesAdmin(); // Refresh the product list
