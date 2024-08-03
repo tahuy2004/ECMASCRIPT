@@ -1,13 +1,13 @@
-const valiResgister = (users) => {
-  if (!users.email || !users.password || !users.confirmPassword) {
-    console.log("Vui lòng nhập đầy đủ thông tin");
-    return false;
+const valiResgister = ({ email, password, confirmPassword }) => {
+  if (!email || !password || !confirmPassword) {
+    return { isValid: false, message: "Vui lòng điền đầy đủ thông tin." };
   }
-  if (users.password !== users.confirmPassword) {
-    console.log("Mật khẩu và mật khẩu xác nhận không khớp");
-    return false;
+  if (password !== confirmPassword) {
+    return {
+      isValid: false,
+      message: "Mật khẩu và xác nhận mật khẩu không khớp.",
+    };
   }
-  return true;
+  // Thêm các điều kiện khác nếu cần
+  return { isValid: true, message: "" };
 };
-
-export default valiResgister;

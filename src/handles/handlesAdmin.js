@@ -1,189 +1,176 @@
 import api from "../apis/config";
+import Header from "../components/Header";
 
 const handlesAdmin = async () => {
-  const product = document.getElementById("product");
-  const url = "http://localhost:3000/products";
+  const app = document.getElementById("app");
+  if (!app) {
+    console.error("Element with ID 'app' not found.");
+    return;
+  }
 
   try {
     const { data } = await api.get("/products");
-
     const contentHTML = /*html*/ `
-      <div class="content">
-        <button class="btn-add">Thêm sản phẩm</button>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Image</th>
-              <th>Description</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${data
-              .map((item) => {
-                return /*html*/ `
-                  <tr>
-                    <td>${item.id}</td>
-                    <td>${item.title}</td>
-                    <td>${item.price}</td>
-                    <td><img src="${item.thumbnail}" alt="Product Image"></td>
-                    <td>${item.description}</td>
-                    <td class="action-buttons">
-                      <button class="btn-edit" data-id="${item.id}">Update</button>
-                      <button class="btn-del" data-id="${item.id}">Delete</button>
-                    </td>
-                  </tr>
-                `;
-              })
-              .join("")}
-          </tbody>
-        </table>
-      </div>
+        ${Header}
+        <div class="content">
+            <h1>Quản lý sản phẩm</h1>
+            <button class="btn btn-primary btn-add" id="btn-add">Thêm sản phẩm</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Images</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${data
+                      .map((item) => {
+                        return /*html*/ `
+                            <tr>
+                                <td>${item.id}</td>
+                                <td>${item.title}</td>
+                                <td>${item.price}</td>
+                                <td><img src="${item.thumbnail}" alt="${item.title}" width="100"></td>
+                                <td>${item.description}</td>
+                                <td>
+                                    <button class="btn btn-danger btn-delete" data-id="${item.id}">Xóa</button>
+                                    <button class="btn btn-warning btn-update" data-id="${item.id}">Sửa</button>
+                                </td>
+                            </tr>
+                        `;
+                      })
+                      .join("")}
+                </tbody>
+            </table>
+        </div>
     `;
+    app.innerHTML = contentHTML;
 
-    product.innerHTML = contentHTML;
-
-    // Delete product
-    const btnDel = document.querySelectorAll(".btn-del");
-    for (const btn of btnDel) {
+    // Xóa
+    const btnDelete = document.querySelectorAll(".btn-delete");
+    btnDelete.forEach((btn) => {
       const id = btn.dataset.id;
       btn.addEventListener("click", async () => {
-        if (confirm("Bạn muốn xóa không?")) {
+        if (confirm("Bạn có muốn xóa không")) {
           try {
-            await fetch(`${url}/${id}`, {
-              method: "DELETE",
-            });
-            alert("Đã xóa sản phẩm.");
-            handlesAdmin(); // Refresh the product list
+            await api.delete(`/products/${id}`);
+            alert("Đã xóa sản phẩm");
+            handlesAdmin(); // Hoặc gọi HomePage() nếu đã định nghĩa
           } catch (error) {
-            console.error("Error deleting product:", error);
+            console.error("Lỗi khi xóa sản phẩm:", error);
           }
-        }
-      });
-    }
-
-    // Add new product
-    const btnAdd = document.querySelector(".btn-add");
-    const content = document.querySelector(".content");
-    btnAdd.addEventListener("click", () => {
-      content.innerHTML = /*html*/ `
-        <form id="add-form">
-          <input type="text" id="ten_sp" placeholder="Tên sản phẩm...">
-          <input type="text" id="gia_sp" placeholder="Giá sản phẩm...">
-          <input type="text" id="ghi_chu" placeholder="Ghi chú...">
-          <input type="submit" value="Thêm mới" class="btn-submit">
-        </form>
-      `;
-
-      const addForm = document.getElementById("add-form");
-      addForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const ten_sp = document.getElementById("ten_sp").value;
-        const gia_sp = document.getElementById("gia_sp").value;
-        const ghi_chu = document.getElementById("ghi_chu").value;
-
-        if (ten_sp === "") {
-          alert("Nhập tên sản phẩm.");
-          return;
-        }
-        if (gia_sp === "" || isNaN(gia_sp) || gia_sp <= 0) {
-          alert("Giá sản phẩm phải là số và lớn hơn 0.");
-          return;
-        }
-        if (ghi_chu === "") {
-          alert("Nhập ghi chú.");
-          return;
-        }
-
-        const newData = {
-          title: ten_sp,
-          price: gia_sp,
-          description: ghi_chu,
-        };
-
-        try {
-          await fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newData),
-          });
-          alert("Thêm sản phẩm thành công.");
-          handlesAdmin(); // Refresh the product list
-        } catch (error) {
-          console.error("Error adding product:", error);
         }
       });
     });
 
-    // Update product
-    const btnEdit = document.querySelectorAll(".btn-edit");
-    for (const btn of btnEdit) {
+    // Thêm sản phẩm
+    const btnAdd = document.querySelector("#btn-add");
+    btnAdd.addEventListener("click", () => {
+      app.innerHTML = /*html*/ `
+          <form id="add-form">
+              <input type="text" id="title" placeholder="Tên sản phẩm...">
+              <input type="number" id="price" placeholder="Giá sản phẩm..." min="0">
+              <input type="text" id="thumbnail" placeholder="Link ảnh sản phẩm...">
+              <textarea id="description" placeholder="Mô tả sản phẩm..."></textarea>
+              <button type="submit" class="btn btn-success">Thêm mới</button>
+              <a href="/admin" class="back-link">Quay lại</a>
+          </form>
+      `;
+
+      document
+        .getElementById("add-form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const title = document.getElementById("title").value;
+          const price = document.getElementById("price").value;
+          const thumbnailUrl = document.getElementById("thumbnail").value;
+          const description = document.getElementById("description").value;
+
+          if (
+            !title ||
+            isNaN(price) ||
+            price <= 0 ||
+            !thumbnailUrl ||
+            !description
+          ) {
+            alert("Vui lòng điền đầy đủ thông tin hợp lệ.");
+            return;
+          }
+
+          try {
+            await api.post("/products", {
+              title,
+              price,
+              thumbnail: thumbnailUrl,
+              description,
+            });
+            alert("Đã thêm sản phẩm mới");
+            handlesAdmin(); // Hoặc gọi HomePage() nếu đã định nghĩa
+          } catch (error) {
+            console.error("Lỗi khi thêm sản phẩm:", error);
+          }
+        });
+    });
+
+    // Sửa sản phẩm
+    const btnUpdate = document.querySelectorAll(".btn-update");
+    btnUpdate.forEach((btn) => {
       const id = btn.dataset.id;
       btn.addEventListener("click", async () => {
         try {
-          const response = await fetch(`${url}/${id}`);
-          const data = await response.json();
-
-          content.innerHTML = /*html*/ `
-            <form id="update-form">
-              <input type="text" id="ten_sp" placeholder="Tên sản phẩm..." value="${data.title}">
-              <input type="text" id="gia_sp" placeholder="Giá sản phẩm..." value="${data.price}">
-              <input type="text" id="ghi_chu" placeholder="Ghi chú..." value="${data.description}">
-              
-              <input type="submit" value="Cập nhật sản phẩm" class="btn-submit">
-              
-            </form>
+          const response = await api.get(`/products/${id}`);
+          const data = response.data;
+          app.innerHTML = /*html*/ `
+              <form id="update-form">
+                  <input type="text" id="title" value="${data.title}">
+                  <input type="number" id="price" value="${data.price}">
+                  <input type="text" id="thumbnail" value="${data.thumbnail}" placeholder="Link ảnh mới (nếu có)">
+                  <textarea id="description">${data.description}</textarea>
+                  <button type="submit" class="btn btn-success">Cập nhật</button>
+                  <a href="/" class="back-link">Quay lại</a>
+              </form>
           `;
 
-          const updateForm = document.getElementById("update-form");
-          updateForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            const ten_sp = document.getElementById("ten_sp").value;
-            const gia_sp = document.getElementById("gia_sp").value;
-            const ghi_chu = document.getElementById("ghi_chu").value;
-            if (ten_sp === "" || gia_sp === "" || ghi_chu === "") {
-              alert("Vui lòng điền đầy đủ thông tin.");
-              return;
-            }
-            if (gia_sp === "" || isNaN(gia_sp) || gia_sp <= 0) {
-              alert("Giá sản phẩm phải là số và lớn hơn 0.");
-              return;
-            }
+          document
+            .getElementById("update-form")
+            .addEventListener("submit", async (event) => {
+              event.preventDefault();
 
-            if (
-              ten_sp === data.title &&
-              gia_sp === data.price &&
-              ghi_chu === data.description
-            ) {
-              alert("Bạn chưa thay đổi thông tin sản phẩm.");
-              return;
-            }
-            try {
-              await fetch(`${url}/${id}`, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(updateForm),
-              });
-              alert("Cập nhật sản phẩm thành công.");
-              handlesAdmin(); // Refresh the product list
-            } catch (error) {
-              console.error("Error updating product:", error);
-            }
-          });
+              const title = document.getElementById("title").value;
+              const price = document.getElementById("price").value;
+              const thumbnailUrl = document.getElementById("thumbnail").value;
+              const description = document.getElementById("description").value;
+
+              if (!title || isNaN(price) || price <= 0 || !description) {
+                alert("Vui lòng điền đầy đủ thông tin hợp lệ.");
+                return;
+              }
+
+              try {
+                await api.put(`/products/${id}`, {
+                  title,
+                  price,
+                  thumbnail: thumbnailUrl, // Gửi URL của ảnh mới nếu có
+                  description,
+                });
+                alert("Đã cập nhật thông tin sản phẩm");
+                handlesAdmin(); // Hoặc gọi HomePage() nếu đã định nghĩa
+              } catch (error) {
+                console.error("Lỗi khi cập nhật sản phẩm:", error);
+              }
+            });
         } catch (error) {
-          console.error("Error fetching product data:", error);
+          console.error("Lỗi khi lấy thông tin sản phẩm:", error);
         }
       });
-    }
+    });
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error("Lỗi khi tải dữ liệu sản phẩm:", error);
   }
 };
 
